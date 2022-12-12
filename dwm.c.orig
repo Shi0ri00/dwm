@@ -230,7 +230,6 @@ static void magicgrid(Monitor *m);
 static void grid(Monitor *m, uint gappo, uint uappi);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
-static void togglefullscr(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void togglewin(const Arg *arg);
@@ -2043,19 +2042,19 @@ grid(Monitor *m, uint gappo, uint gappi)
     overcols = n % cols;
     if (overcols)
         dx = (m->ww - overcols * cw - (overcols - 1) * gappi) / 2 - gappo;
-    for(i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+	for(i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
         cx = m->wx + (i % cols) * (cw + gappi);
         cy = m->wy + (i / cols) * (ch + gappi);
         if (overcols && i >= n - overcols) {
             cx += dx;
         }
-    resize(c,
-	cx + gappo,
-        cy + gappo,
-        cw - 2 * c->bw,
-        ch - 2 * c->bw,
-        0);
-}
+        resize(c,
+               cx + gappo,
+               cy + gappo,
+               cw - 2 * c->bw,
+               ch - 2 * c->bw,
+               0);
+	}
 }
 
 void
@@ -2079,13 +2078,6 @@ togglefloating(const Arg *arg)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
 	arrange(selmon);
-}
-
-void
-togglefullscr(const Arg *arg)
-{
-  if(selmon->sel)
-    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
 }
 
 void
