@@ -64,6 +64,6 @@ get_bytes
 vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
 vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
-xsetroot -name "| $(print_mem)| $(check_connect) ↓$vel_recv ↑$vel_trans | $(dwm_alsa) | $(print_date) |"
+xsetroot -name "| $(print_mem)M| $(check_connect) ↓$vel_recv ↑$vel_trans | $(dwm_alsa) | $(print_date) |"
 
 exit 0
