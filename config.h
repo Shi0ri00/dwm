@@ -28,7 +28,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "I", "II", "III", "IV", "V" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -67,12 +67,12 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "rofi", "-show" , "drun" , NULL };
+static const char *dmenucmd[] = { "rofi", "-show" , "drun" ,"-theme", "/home/shiori/.config/rofi/launchers/type-2/style-2.rasi", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", "scratchpad", "-g", "120x34", NULL };
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
-static const char *browsercmd[]  = { "microsoft-edge-stable", NULL };
+static const char *browsercmd[]  = { "firefox", NULL };
 static const char *upvol[]   = { "/home/shiori/scripts/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/shiori/scripts/vol-down.sh",  NULL };
 static const char *mutevol[] = { "/home/shiori/scripts/vol-toggle.sh",  NULL };
@@ -117,7 +117,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,      	        XK_period,		 tagmon,         {.i = +1 } },
         { MODKEY,             		        XK_s,    		 show,           {0} },
         { MODKEY|ShiftMask,             	XK_s,   		 showall,        {0} },
-        { MODKEY,                      		XK_h,  			 hide,           {0} },
+        { MODKEY|ShiftMask,                 	XK_h,  			 hide,           {0} },
 	TAGKEYS(                	        XK_1,                    0)
 	TAGKEYS(               		        XK_2,                    1)
 	TAGKEYS(                	        XK_3,                    2)
